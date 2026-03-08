@@ -1,40 +1,288 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Jenny Petrova</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Jenny Petrova — PhD Student in Financial Mathematics" />
+  <title>Jenny Petrova</title>
+
+  <style>
+    :root{
+      --bg:#fbfbfb;
+      --panel:#ffffff;
+      --text:#111111;
+      --muted:#6f6f6f;
+      --accent:#6b1f2b;
+      --border:#e6e6e6;
+      --chip:#f3f3f3;
+      --shadow: 0 1px 0 rgba(0,0,0,0.03);
+      --max: 780px;
+      --radius: 14px;
+
+      /* layout knobs */
+      --photo-col: 300px; /* width reserved for photo column */
+      --gap: 48px;        /* gap between photo and text column */
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* keep wrap exactly as before */
+    .wrap{
+      max-width: calc(var(--photo-col) + var(--gap) + var(--max));
+      margin: 0 auto;
+      padding: 40px 18px 80px;
+    }
+
+    header{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+      padding-top: 28px;
+      padding-bottom: 16px;
+      margin-bottom: 8px;
+    }
+
+    .site-name{
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      z-index: 10;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: none;
+    }
+    .site-name:hover{ color:var(--accent); }
+
+    .top-nav{
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: -6px;
+      margin-bottom: 16px;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .top-nav a{
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .top-nav a:hover{
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
+
+    #index nav a.active{
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    h1{
+      margin:0;
+      font-size: 44px;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      font-weight: 700;
+    }
+
+    .hero{
+      margin-top: 6px;
+      margin-bottom: 4px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .hero p{ margin: 0 0 10px; }
+
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .intro-text{
+      margin-bottom: 24px;
+    }
+
+    a{
+      color: var(--text);
+      text-decoration:none;
+      border-bottom: 1px solid var(--border);
+    }
+    a:hover{ border-bottom-color: var(--text); }
+
+    h2{
+      font-size: 13px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 12px;
+    }
+
+    /* content indent (unchanged behavior) */
+    section > .card,
+    section > .facts,
+    section > ul,
+    section > p{
+      margin-left: 14px;
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    /* remove card styling in research on home */
+    #research .card{
+      border: none;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    ul{ margin: 10px 0 0 18px; padding:0; }
+    li{ margin: 7px 0; }
+
+    /* ===== NEW: One centered unit below nav ===== */
+    .home-row{
+      display: grid;
+      grid-template-columns: var(--photo-col) var(--max);
+      column-gap: var(--gap);
+      justify-content: center;   /* centers the whole unit */
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    /* left column: photo + logos */
+    .header-photo{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .header-photo img{
+      width: 300px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+
+    /* right column: your existing text content */
+    section{ padding-top: 0; }
+
+    /* responsive: stack */
+    @media (max-width: 1100px){
+      .wrap{
+        max-width: var(--max);
+      }
+      .home-row{
+        grid-template-columns: 1fr;
+        row-gap: 18px;
+        justify-content: start;
+      }
+      .header-photo{
+        align-items: center;
+      }
+      .header-photo img{
+        width: 180px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .top-nav{
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .header-photo img{
+        width: 140px;
+      }
+    }
+  </style>
 </head>
 
-<body>
+<body id="index">
+  <div class="wrap">
+    <header>
+      <a href="index.html" class="site-name">Jenny Petrova</a>
 
-<header>
-    <h1>Jenny Petrova</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-    </nav>
-</header>
+      <nav class="top-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="research.html">Research</a>
+        <a href="talks.html">Talks</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="awards.html">Awards</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-<main>
+      <div class="home-row">
+        <div class="header-photo">
+          <img src="assets/images/picture.jpg" alt="Jenny Petrova">
+        </div>
 
-<h2>Welcome</h2>
+        <div>
+          <div class="intro-text">
+            <h1>Jenny Petrova</h1>
 
-<p>
-Welcome to my personal website. I am a PhD student in Financial Mathematics
-interested in quantitative finance, stochastic processes, and numerical methods.
-</p>
+            <div class="hero">
+              <p>
+                I am a PhD student in Financial Mathematics at Florida State University,
+                with research interests in...
+              </p>
 
-</main>
+              <div class="links">
+                <a href="https://github.com/jennygpetrova" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/jennygpetrova/" target="_blank">LinkedIn</a>
+                <a href="assets/Jenny_Petrova_CV.pdf" target="_blank">CV</a>
+              </div>
+            </div>
+          </div>
 
-<footer>
-<p>© 2026 Jenny Petrova</p>
-</footer>
+          <section id="research">
+            <h2>Research & Interests</h2>
 
-</body>
-</html>
-
+            <div class="card">
+              <ul>
+                <li>.</li>
+                <li>.</li>
+                <li>Monte Carlo methods on parallel architectures, with a focus on GPU algorithms for psuedorandom number generation.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </header>
+  </div>
 </body>
 </html>
