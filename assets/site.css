@@ -1,0 +1,372 @@
+/* Shared stylesheet for non-home pages */
+
+:root{
+  --bg: #fbfbfb;
+  --panel: #ffffff;
+  --text: #111111;
+  --muted: #6f6f6f;
+  --accent: #6b1f2b;
+  --border: #e6e6e6;
+  --chip: #f3f3f3;
+  --shadow: 0 1px 0 rgba(0,0,0,0.03);
+  --max: 960px;
+  --radius: 14px;
+  --section-indent: 14px;
+  --project-icon-size: 100px;
+  --talk-icon-size: calc(var(--project-icon-size) - 10px);
+}
+
+*{
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  line-height: 1.7;
+}
+
+.page{
+  width: 100%;
+}
+
+.wrap{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 40px 18px 80px;
+}
+
+/* Affiliations banner: horizontal, top-left */
+.affiliations{
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  z-index: 30;
+}
+
+/* Prevent global link underline/border on logo links */
+.affiliations a{
+  border-bottom: none !important;
+}
+
+/* Logo sizing (smaller) */
+.affil{
+  display: inline-flex;
+  width: 64px;
+}
+
+.affil img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.affil:hover{
+  transform: translateY(-1px);
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 28px;
+  padding-bottom: 16px;
+  margin-bottom: 8px;
+}
+
+h1{
+  margin: 0;
+  font-size: 44px;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 700;
+}
+
+nav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+nav a{
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 13px;
+  border-bottom: 1px solid transparent;
+}
+
+nav a:hover{
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+.top-nav{
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: -6px;
+  margin-bottom: 16px;
+}
+
+.top-nav a{
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+}
+
+.top-nav a:hover{
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+.site-name{
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.site-name:hover{
+  color: var(--accent);
+}
+
+/* Active nav link */
+nav a.active{
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+nav a.active:hover{
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+a{
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+}
+
+a:hover{
+  border-bottom-color: var(--text);
+}
+
+/* Remove underline/border from icon links */
+a:has(.project-icon){
+  border-bottom: none !important;
+}
+
+a:has(.project-icon):hover{
+  border-bottom: none !important;
+}
+
+section{
+  padding-top: 10px;
+}
+
+/* Section headings: flush with container */
+h2{
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+/* Section content: flush with container */
+section > .card,
+section > .facts,
+section > ul,
+section > p{
+  margin-left: 0;
+}
+
+section > .card + .card{
+  margin-top: 14px;
+}
+
+.card{
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.card + .card{
+  margin-top: 14px;
+}
+
+#talks .card,
+#research .card{
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+#talks .project-card,
+#research .project-card{
+  padding: 0;
+}
+
+#talks .card + .card,
+#research .card + .card{
+  margin-top: 24px;
+}
+
+.project-card{
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 14px 0;
+}
+
+.project-icon{
+  width: var(--project-icon-size);
+  height: var(--project-icon-size);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0;
+  flex-shrink: 0;
+  display: block;
+}
+
+
+
+.project-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-card + .project-card{
+  margin-top: 14px;
+}
+
+.project-content p{
+  margin-top: 4px;
+}
+
+#talks .project-content{  
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+#talks .project-icon{
+  width: 60px;
+  height: 60px;
+}
+
+#talks .project-content p{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+#talks .ghost-text{
+  visibility: hidden;
+}
+
+#talks .project-card + .project-card{
+
+  margin-top: 32px;
+}
+
+#talks .card-title strong,
+#research .card-title strong{
+  font-size: 17px;
+}
+
+#research .project-content p{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+#research .project-content{
+  gap: 4px;
+}
+
+.card-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.card-title strong{
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.meta{
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* FACTS (base) */
+.facts{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.fact{
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.fact span:first-child{
+  color: var(--muted);
+}
+
+.fact span:last-child{
+  text-align: center;
+}
+
+/* Responsive media queries */
+@media (max-width: 900px){
+  .affiliations{
+    display: none;
+  }
+  .wrap{
+    padding-left: 18px;
+  }
+}
+
+@media (max-width: 640px){
+  .top-nav{
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+}
