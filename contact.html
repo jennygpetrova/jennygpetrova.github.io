@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Jenny Petrova — Contact" />
+  <title>Contact — Jenny Petrova</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    /* Page-specific styles for contact */
+    
+    /* Remove card styling in Contact */
+    #contact .card{
+      border: none;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    /* CONTACT: two-column layout */
+    @media (min-width: 640px){
+      #contact .facts{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .contact-affiliations{
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .contact-affiliations a{
+      border-bottom: none !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      overflow: visible;
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+
+    .contact-affiliations img{
+      height: 56px;
+      width: auto;
+      display: block;
+      background: transparent !important;
+    }
+
+    .contact-affiliations .affil:hover{
+      transform: translateY(-1px);
+    }
+
+    .affil-fsu img{
+      transform: translateX(-6px);
+    }
+
+    @media (max-width: 640px){
+      .contact-affiliations img{
+        height: 44px;
+      }
+      .contact-affiliations{
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body id="page">
+  <div class="page">
+    <div class="wrap">
+      <header>
+        <a href="index.html" class="site-name">Jenny Petrova</a>
+        <nav class="top-nav">
+          <a href="index.html">Home</a>
+          <a href="research.html">Research</a>
+          <a href="teaching.html">Teaching</a>
+          <a href="contact.html" class="active">Contact</a>
+        </nav>
+      </header>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="card">
+          <div class="facts">
+            <div class="fact">
+              <span>Email</span>
+              <span><a href="mailto:jgp20bj@fsu.edu">jgp20bj@fsu.edu</a></span>
+            </div>
+            <div class="fact">
+              <span>Office</span>
+              <span>Carothers Building, MCH 413E</span>
+            </div>
+            <div class="fact">
+              <span>Office hours</span>
+              <span>
+                Tuesdays · 11:00-12:30<br>
+                Wednesdays · 12:00–1:30
+              </span>
+            </div>
+            <div class="fact">
+              <span>Location</span>
+              <span>Tallahassee, FL</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
