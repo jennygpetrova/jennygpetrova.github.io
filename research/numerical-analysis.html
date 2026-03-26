@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Jenny Petrova — Methods and Algorithms in Numerical Analysis" />
+  <title>Methods and Algorithms in Numerical Analysis — Project</title>
+
+  <link rel="stylesheet" href="../assets/site.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (typeof renderMathInElement !== "undefined") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false}
+          ]
+        });
+      }
+    });
+  </script>
+
+  <style>
+    #project .card{
+      border: none;
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    #project .return-link{
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+
+    #project .return-link:hover{
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
+
+    .project-shell{
+      display: grid;
+      gap: 0;
+    }
+
+    .hero-panel{
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .hero-title{
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      font-weight: 700;
+      max-width: none;
+    }
+
+    .hero-summary{
+      max-width: none;
+      margin: 16px 0 0;
+      font-size: 16px;
+      color: #222;
+    }
+
+    .project-links{
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .project-links-label{
+      color: var(--accent);
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+    }
+
+    .project-links a{
+      font-size: 16px;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+    }
+
+    .metric-grid{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
+
+    .metric-card{
+      padding: 16px 18px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .metric-value{
+      display: block;
+      font-size: 26px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-weight: 650;
+    }
+
+    .metric-label{
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .project-layout{
+      display: block;
+    }
+
+    .content-stack,
+    .side-stack{
+      display: grid;
+      gap: 32px;
+    }
+
+    .side-stack{
+      margin-top: 32px;
+    }
+
+    .section-panel,
+    .side-panel{
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .section-title,
+    .side-title{
+      margin: 0 0 16px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-panel p:last-child,
+    .side-panel p:last-child{
+      margin-bottom: 0;
+    }
+
+    .compact-list{
+      margin: 10px 0 0 18px;
+      padding: 0;
+    }
+
+    .compact-list li{
+      margin: 8px 0;
+    }
+
+    .report-columns{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    .report-column p{
+      margin: 0;
+    }
+
+    .report-column .compact-list{
+      margin-top: 10px;
+    }
+
+    .detail-grid{
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 10px 14px;
+      font-size: 14px;
+    }
+
+    .detail-grid dt{
+      color: var(--muted);
+    }
+
+    .detail-grid dd{
+      margin: 0;
+    }
+
+    .tag-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag{
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--muted);
+      font-size: 12px;
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px){
+      .metric-grid{
+        grid-template-columns: 1fr;
+      }
+
+      .report-columns{
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title{
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body id="page">
+  <div class="page">
+    <div class="wrap">
+      <header>
+        <a href="../index.html" class="site-name">Jenny Petrova</a>
+        <nav class="top-nav">
+          <a href="../index.html">Home</a>
+          <a href="../research.html" class="active">Research</a>
+          <a href="../teaching.html">Teaching</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <section id="project">
+        <a class="return-link" href="../research.html">Return to research</a>
+
+        <div class="card">
+          <div class="project-shell">
+            <div class="hero-panel">
+              <h1 class="hero-title">Methods and Algorithms in Numerical Analysis</h1>
+              <p class="hero-summary">
+                A collection of reports focused on low-latant, numerically stable, and reproducible implementations of core algorithms in numerical analysis.
+              </p>
+
+              <p class="project-links" aria-label="Project links">
+                <span class="project-links-label">Available materials:</span>
+                <a href="https://github.com/jennygpetrova/Numerical-Analysis" target="_blank" rel="noopener noreferrer">Numerical Library (GitHub)</a>
+                <a href="#analysis-report-archives">Analysis Report Archives (PDF)</a>
+              </p>
+
+              <div class="metric-grid" aria-label="Project highlights">
+                <div class="metric-card">
+                  <span class="metric-value">Sep 2024–May 2025</span>
+                  <span class="metric-label">Development period</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-layout">
+              <div class="content-stack">
+                <div class="section-panel">
+                  <h2 class="section-title">Abstract</h2>
+                  <p>
+                    These projects feature libraries of core numerical methods, built under the consideration of floating-point and convergence behavior, in addition to computation complexity. 
+                  </p>
+                  <p>
+                    The libraries include routines for dense matrix operations and factorizationss, polynomial interpolation and splines, solvers for linear and non-linear systems, and numerical quadrature methods.
+                  </p>
+                  <p>
+                    Across reports, theoretical assumptions are validated with numerical experiments, including reproductions of standard results from the literature.
+                  </p>
+                </div>
+
+                <div class="section-panel" id="analysis-report-archives">
+                  <h2 class="section-title">Analysis Report Archives (PDF)</h2>
+                  <div class="report-columns">
+                    <div class="report-column">
+                      <p><strong>Numerical library reports</strong></p>
+                      <ul class="compact-list">
+                        <li><a href="../reports/Dense Matrix Factorization.pdf" target="_blank" rel="noopener noreferrer">Dense Matrix Factorization</a></li>
+                        <li><a href="../reports/Polynomial Interpolation.pdf" target="_blank" rel="noopener noreferrer">Polynomial Interpolation</a></li>
+                        <li><a href="../reports/Spline Interpolation.pdf" target="_blank" rel="noopener noreferrer">Spline Interpolation</a></li>
+                        <li><a href="../reports/Solving Linear Systems.pdf" target="_blank" rel="noopener noreferrer">Solving Linear Systems</a></li>
+                        <li><a href="../reports/Root-Finding Methods.pdf" target="_blank" rel="noopener noreferrer">Root-Finding Methods</a></li>
+                        <li><a href="../reports/Quadrature Methods.pdf" target="_blank" rel="noopener noreferrer">Quadrature Methods</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+
+            </div>
+
+            <div class="side-stack">
+              <aside class="side-panel">
+                <h2 class="side-title">Attributes</h2>
+                <dl class="detail-grid">
+                  <dt>Period</dt>
+                  <dd>Sep 2024–May 2025</dd>
+                  <dt>Affiliation</dt>
+                  <dd>Florida State University</dd>
+                  <dt>Context</dt>
+                  <dd>Numerical methods and Monte Carlo algorithms</dd>
+                  <dt>Role</dt>
+                  <dd>Solo author</dd>
+                  <dt>Primary stack</dt>
+                  <dd>Python</dd>
+                </dl>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
